@@ -96,8 +96,16 @@ public class StdDrawDemo {
 
 	public static void main(String[] args) {
 		
-		drawThree();
-		drawRandom();
-		drawZoom();
+//		drawThree();
+//		drawRandom();
+//		drawZoom();
+
+		StdDraw.setScale(-200, 200);
+		StdDraw.clear();
+		StdDraw.picture(0, 0, "/test/"+"starfield.jpg");
+
+		StdDraw.show();
+		StdDraw.pause(2000);
+
 	}
 } 

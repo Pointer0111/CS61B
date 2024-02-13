@@ -249,5 +249,33 @@ public class IntList {
         out.format(")");
         return out.toString();
     }
+
+    // Destructive
+    public static IntList reverse(IntList A){
+        if (A == null) return null;
+        IntList dummy = new IntList(-1, A);
+        int n = 0, tmp;
+        IntList B = A;
+        while (B != null){
+            B = B.rest;
+            n++;
+        }
+
+        while (n > 0){
+            int m = n;
+            B = A;
+            while (m > 1){
+                m--;
+                B = B.rest;
+            }
+            tmp = A.first;
+            A.first = B.first;
+            B.first = tmp;
+            A = A.rest;
+            n -= 2;
+        }
+
+        return dummy.rest;
+    }
 }
 
