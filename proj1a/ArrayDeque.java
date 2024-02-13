@@ -44,7 +44,6 @@ public class ArrayDeque<T> {
         logicalSize--;
         nextFirst = (nextFirst + 1) % allocatedSize;
         T item = elems[nextFirst];
-        elems[nextLast] = null;
 
         if (logicalSize < 0.25 * allocatedSize) {
             int capacity = (int) (0.5 * allocatedSize);
@@ -61,7 +60,6 @@ public class ArrayDeque<T> {
         logicalSize--;
         nextLast = (nextLast - 1 + allocatedSize) % allocatedSize;
         T item = elems[nextLast];
-        elems[nextLast] = null;
 
         if (logicalSize < 0.25 * allocatedSize) {
             int capacity = (int) (0.5 * allocatedSize);
