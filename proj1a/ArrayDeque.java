@@ -35,6 +35,7 @@ public class ArrayDeque<T> {
             System.out.print(" ");
             index = (index + 1) % allocatedSize;
         }
+        System.out.print("\n");
     }
 
     public T removeFirst() {
@@ -70,7 +71,7 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T item) {
-        if (logicalSize == allocatedSize) {
+        if (logicalSize == allocatedSize - 1) {
             int capacity = 2 * allocatedSize;
             resize(capacity);
         }
@@ -81,7 +82,7 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        if (logicalSize == allocatedSize) {
+        if (logicalSize == allocatedSize - 1) {
             int capacity = 2 * allocatedSize;
             resize(capacity);
         }
@@ -105,7 +106,7 @@ public class ArrayDeque<T> {
             System.arraycopy(elems, 0, newlist, pos + num, last + 1);
         }
 
-        nextFirst = (first - 1 + pos) % capacity;
+        nextFirst = pos - 1;
         nextLast = (nextFirst + logicalSize + 1) % capacity;
         elems = newlist;
         allocatedSize = capacity;
