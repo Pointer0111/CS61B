@@ -46,7 +46,7 @@ public class ArrayDeque<T> {
         nextFirst = (nextFirst + 1) % allocatedSize;
         T item = elems[nextFirst];
 
-        if (logicalSize < 0.25 * allocatedSize && logicalSize > 16) {
+        if (logicalSize < 0.25 * allocatedSize && logicalSize > 0 && allocatedSize > 16) {
             int capacity = (int) (0.5 * allocatedSize);
             resize(capacity);
         }
@@ -62,7 +62,7 @@ public class ArrayDeque<T> {
         nextLast = (nextLast - 1 + allocatedSize) % allocatedSize;
         T item = elems[nextLast];
 
-        if (logicalSize < 0.25 * allocatedSize && logicalSize > 16) {
+        if (logicalSize < 0.25 * allocatedSize && logicalSize > 0 && allocatedSize > 16) {
             int capacity = (int) (0.5 * allocatedSize);
             resize(capacity);
         }
@@ -101,6 +101,7 @@ public class ArrayDeque<T> {
         if (first <= last) System.arraycopy(elems, first, newlist, pos, logicalSize);
 
         else {
+            // 没有修改remove()前，如果空队列加一个元素，再减一个元素，就会出问题
             int num = logicalSize - last - 1;
             System.arraycopy(elems, first, newlist, pos, num);
             System.arraycopy(elems, 0, newlist, pos + num, last + 1);
@@ -114,3 +115,5 @@ public class ArrayDeque<T> {
 
 
 }
+
+
