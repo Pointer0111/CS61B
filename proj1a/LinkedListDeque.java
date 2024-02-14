@@ -64,8 +64,11 @@ public class LinkedListDeque<T> {
             index--;
             p = p.next;
         }
-        if (p == sentinel) return null;
-        else return p.item;
+        if (p == sentinel) {
+            return null;
+        } else {
+            return p.item;
+        }
     }
 
     public void printDeque() {
@@ -79,9 +82,14 @@ public class LinkedListDeque<T> {
     }
 
     private T getRecursive(Node head, int index) {
-        if (head == sentinel || head == null) return null;
-        if (index == 0) return head.item;
-        else return getRecursive(head.next, index - 1);
+        if (head == sentinel || head == null) {
+            return null;
+        }
+        if (index == 0) {
+            return head.item;
+        } else {
+            return getRecursive(head.next, index - 1);
+        }
     }
 
     public T getRecursive(int index) {
@@ -93,13 +101,13 @@ public class LinkedListDeque<T> {
         private Node prev;
         private Node next;
 
-        public Node(T item, Node next) {
+        Node(T item, Node next) {
             this.item = item;
             this.next = next;
             prev = null;
         }
 
-        public Node() {
+        Node() {
             next = null;
             prev = null;
         }

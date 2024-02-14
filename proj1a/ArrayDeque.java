@@ -98,9 +98,9 @@ public class ArrayDeque<T> {
         int last = (nextLast - 1 + allocatedSize) % allocatedSize;
 
         int pos = (int) (0.25 * capacity);
-        if (first <= last) System.arraycopy(elems, first, newlist, pos, logicalSize);
-
-        else {
+        if (first <= last) {
+            System.arraycopy(elems, first, newlist, pos, logicalSize);
+        } else {
             // 没有修改remove()前，如果空队列加一个元素，再减一个元素，就会出问题
             int num = logicalSize - last - 1;
             System.arraycopy(elems, first, newlist, pos, num);
