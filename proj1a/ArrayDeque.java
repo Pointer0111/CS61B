@@ -98,7 +98,7 @@ public class ArrayDeque<T> {
         int last = (nextLast - 1 + allocatedSize) % allocatedSize;
 
         int pos = (int) (0.25 * capacity);
-        if (first <= last) System.arraycopy(elems, 0, newlist, pos, logicalSize);
+        if (first <= last) System.arraycopy(elems, first, newlist, pos, logicalSize);
 
         else {
             int num = logicalSize - last - 1;
